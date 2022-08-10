@@ -1,3 +1,14 @@
+/*
+============================================
+; Title: nodebucket
+; File Name: app.module.ts
+; Author: Professor Krasso
+; Date: 9 August 2022
+; Modified By: Laura Kendl
+; Description: Demonstrates how to build a MEAN application.
+===========================================
+*/
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 

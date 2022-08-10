@@ -1,3 +1,14 @@
+/*
+============================================
+; Title: nodebucket
+; File Name: home.component.ts
+; Author: Professor Krasso
+; Date: 9 August 2022
+; Modified By: Laura Kendl
+; Description: Demonstrates how to build a MEAN application.
+===========================================
+*/
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

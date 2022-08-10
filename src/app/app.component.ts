@@ -1,3 +1,14 @@
+/*
+============================================
+; Title: nodebucket
+; File Name: app.component.ts
+; Author: Professor Krasso
+; Date: 9 August 2022
+; Modified By: Laura Kendl
+; Description: Demonstrates how to build a MEAN application.
+===========================================
+*/
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +17,5 @@ import { Component } from '@angular/core';
   styles: [``]
 })
 export class AppComponent {
-  
+
 }
