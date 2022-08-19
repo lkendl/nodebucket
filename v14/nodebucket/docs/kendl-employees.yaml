@@ -1,0 +1,75 @@
+openapi: "3.0.0"
+info:
+  title: nodebucket API
+  version: 1.0.0
+paths:
+  /employees/{empId}:
+    get:
+      tags:
+      - Employees
+      description: API for returning a single employee document from MongoDB Atlas.
+      summary: returns an employee document
+      parameters:
+        - name: empId
+          in: path
+          required: true
+          description: The empId requested by the user.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Employee document
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+  #   post:
+  #     tags:
+  #     - Composers
+  #     description: API for adding new composer objects
+  #     summary: Creates a new composer object
+  #     requestBody:
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             description: Composer's information
+  #             required:
+  #               - firstName
+  #               - lastName
+  #             properties:
+  #               firstName:
+  #                 description: Composer's first name
+  #                 type: string
+  #               lastName:
+  #                 description: Composer's last name
+  #                 type: string
+  #     responses:
+  #       '200':
+  #         description: User added
+  #       '500':
+  #         description: Server Exception
+  #       '501':
+  #         description: MongoDB Exception
+
+  # /composers/{id}:
+  #   get:
+  #     tags:
+  #     - Composers
+  #     description: API for returning a single composer document from MongoDB.
+  #     summary: returns a composer document
+  #     parameters:
+  #       - name: id
+  #         in: path
+  #         required: true
+  #         description: The composerId requested by the user.
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '200':
+  #         description: Composer document in JSON format
+  #       '500':
+  #         description: Server Exception
+  #       '501':
+  #         description: MongoDB Exception

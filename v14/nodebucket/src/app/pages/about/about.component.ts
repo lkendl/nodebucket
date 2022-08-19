@@ -1,7 +1,7 @@
-<!--
+/*
 ============================================
 ; Title: nodebucket
-; File Name: auth-layout.component.html
+; File Name: about.component.ts
 ; Author: Professor Krasso
 ; Date: 16 August 2022
 ; Modified By: Laura Kendl
@@ -12,6 +12,20 @@
 ; will be used for manipulating and returning saved records, SoapUI for unit testing,
 ; and Angular for user interactions" (Krasso, 2022).
 ===========================================
--->
+*/
 
-<router-outlet></router-outlet>
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.css']
+})
+export class AboutComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

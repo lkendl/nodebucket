@@ -1,7 +1,7 @@
-<!--
+/*
 ============================================
 ; Title: nodebucket
-; File Name: auth-layout.component.html
+; File Name: employee.interface.ts
 ; Author: Professor Krasso
 ; Date: 16 August 2022
 ; Modified By: Laura Kendl
@@ -12,6 +12,11 @@
 ; will be used for manipulating and returning saved records, SoapUI for unit testing,
 ; and Angular for user interactions" (Krasso, 2022).
 ===========================================
--->
+*/
 
-<router-outlet></router-outlet>
+//Model for users login that displays name.
+export interface Employee {
+  empId: string;
+  firstName: string;
+  lastName: string;
+}

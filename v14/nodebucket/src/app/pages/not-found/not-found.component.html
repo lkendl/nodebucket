@@ -1,7 +1,7 @@
 <!--
 ============================================
 ; Title: nodebucket
-; File Name: auth-layout.component.html
+; File Name: not-found.component.html
 ; Author: Professor Krasso
 ; Date: 16 August 2022
 ; Modified By: Laura Kendl
@@ -14,4 +14,14 @@
 ===========================================
 -->
 
-<router-outlet></router-outlet>
+<div fxLayout="column">
+  <mat-card fxFlex style="margin-top: 10%; width: 50%; margin-left: 18%;" class="mat-elevation-z0">
+    <mat-card-title>
+      <img src="./assets/404.jpg" />
+    </mat-card-title>
+    <br/>
+    <mat-card-content style="text-align: center; padding-left: 30%;">
+      <button mat-raised-button color="accent" routerLink="/">Return home</button>
+    </mat-card-content>
+  </mat-card>
+</div>

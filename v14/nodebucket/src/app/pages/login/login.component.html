@@ -1,0 +1,75 @@
+<!--
+============================================
+; Title: nodebucket
+; File Name: login.component.html
+; Author: Professor Krasso
+; Date: 17 August 2022
+; Modified By: Laura Kendl
+; Description: "nodebucket is task management software designed to simplify the way you
+; create, track, edit, and delete time sensitive material. This is a full-stack
+; MEAN (MongoDB, Express, Angular, and Node.js) application, utilizing the concepts that
+; were taught in previous courses. MongoDB will be used for data persistence. Node.js
+; will be used for manipulating and returning saved records, SoapUI for unit testing,
+; and Angular for user interactions" (Krasso, 2022).
+===========================================
+-->
+
+<div fxLayout="column">
+
+  <mat-card fxFlex class="login-container mat-elevation-z8">
+
+    <mat-card-header>
+      <mat-card-title class="login-title">
+        Employee Log-In Page
+      </mat-card-title>
+
+      <br />
+
+      <mat-card-subtitle class="login-subtitle">
+        You must enter a valid empId to continue.
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <!-- Set error messages defined in login.component.ts file. -->
+      <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+
+      <mat-card class="mat-elevation-z0" fxLayout="column" fxLayoutGap="10px">
+
+        <!--Form field that calls to FormField defined in login.component.ts and an ngSubmit call to the submit function.-->
+        <form [formGroup]="loginForm" (ngSubmit)="login(); loginForm.reset();">
+
+        <mat-card-content class="mat-elevation-z0">
+
+          <!-- Begin form. -->
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <input matInput
+                  formControlName="empId"
+                  placeholder="Employee ID" />
+
+           <!-- Error handling -->
+
+           <!--Add *ngIf to check if errorMessage variable has a value. On true, output the results.-->
+           <mat-error *ngIf="loginForm.controls['empId'].hasError('required') && loginForm.controls['empId'].touched">
+            Employee ID is a required field.
+           </mat-error>
+
+           <!--Add *ngIf that checks for errors and whether the control has been touched. -->
+           <mat-error *ngIf="loginForm.controls['empId'].hasError('pattern') && loginForm.controls['empId'].touched">
+            Employee ID must be a numerical value.
+           </mat-error>
+          </mat-form-field>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+          <!--Disable button when the form is invalid.-->
+          <button type="submit" fxFlex mat-raised-button [disabled]="!loginForm.valid" color="primary" style="height: 50px; font-size: 18px;">Log in</button>
+        </mat-card-actions>
+      </form>
+      </mat-card>
+
+    </mat-card-content>
+  </mat-card>
+</div>
