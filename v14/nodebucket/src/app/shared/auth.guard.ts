@@ -1,7 +1,7 @@
 /*
 ============================================
 ; Title: nodebucket
-; File Name: login.guard.ts
+; File Name: auth.guard.ts
 ; Author: Professor Krasso
 ; Date: 18 August 2022
 ; Modified By: Laura Kendl

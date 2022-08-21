@@ -1,13 +1,34 @@
+/**
+============================================
+; Title: nodebucket
+; File Name: login.component.css
+; Author: Professor Krasso
+; Date: 16 August 2022
+; Modified By: Laura Kendl
+; Description: "nodebucket is task management software designed to simplify the way you
+; create, track, edit, and delete time sensitive material. This is a full-stack
+; MEAN (MongoDB, Express, Angular, and Node.js) application, utilizing the concepts that
+; were taught in previous courses. MongoDB will be used for data persistence. Node.js
+; will be used for manipulating and returning saved records, SoapUI for unit testing,
+; and Angular for user interactions" (Krasso, 2022).
+===========================================
+*/
+
 .login-container {
   width: 35%;
-  margin: 10% auto;
+  margin: 20% auto;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .login-title {
   text-align: center;
-  font-size: 48px;
+  font-size: 2.5em;
   font-weight: lighter;
   padding: 20px;
+  color: #000;
 }
 
 .login-subtitle {
@@ -22,9 +43,6 @@
 }
 
 .mat-card-header {
-  background-color: #4F3674;
-  padding-left: 0%;
-  padding-top: 15px;
   color: white;
 }
 

@@ -14,11 +14,24 @@
 ===========================================
 */
 
+body {
+  background-color: #740001!important;
+}
+
+.nav-menu {
+  width: 100%;
+  /* margin: 0 auto; */
+  text-align: center;
+}
 
 .logo {
   margin-left: 75px;
   font-size: 24px;
-  font-weight: lighter;;
+  font-weight: lighter;
+}
+
+.links {
+  margin: 25px 15px 0px;
 }
 
 .navbar-container {
@@ -28,6 +41,10 @@
 .navbar-link {
   font-size: 24px;
   font-weight: lighter;
+}
+
+#profile-container {
+  float: right;
 }
 
 .main-content {
@@ -54,3 +71,38 @@
 .bu-link:hover {
   text-decoration: underline;
 }
+
+
+/*
+
+.logo {
+  margin-top: 25px;
+  margin-left: -10px;
+  text-align: center;
+  z-index: 999;
+  background-color: #FFF;
+  padding-top: 8px;
+  width: 70px;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-shadow: 3px 3px 5px #0E1A40;
+}
+
+.links {
+  margin: 25px 15px 0px;
+}
+
+.main-container {
+  padding-top: 25px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.mat-card-title {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.content-container {
+  margin-bottom: 50px;
+}  */

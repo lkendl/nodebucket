@@ -11,6 +11,10 @@
 ; were taught in previous courses. MongoDB will be used for data persistence. Node.js
 ; will be used for manipulating and returning saved records, SoapUI for unit testing,
 ; and Angular for user interactions" (Krasso, 2022).
+; Resources:
+; [Ref A] Techiediaries: https://www.techiediaries.com/
+; angular-9-8-path-redirection-and-handling-404-using-wildcard-routes/ (Angular 9/8
+; How-To: Path Redirection and Handling 404 Paths Using Router Wildcard Routes)
 ===========================================
 */
 
@@ -21,6 +25,8 @@ import { HomeComponent } from './pages/home/home.component'
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { AboutComponent } from './pages/about/about.component';
 import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
@@ -32,7 +38,15 @@ const routes: Routes = [
         path: '', // Anyone that follows the BaseLayoutComponent, they will be using the BaseLayout in all of the child components of that Base component.
         component: HomeComponent,
         canActivate: [AuthGuard] // Adds AuthGuard to parent.
-      }
+      },
+      {
+        path: 'about',
+        component: AboutComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
+      },
     ]
   },
   {
@@ -50,10 +64,10 @@ const routes: Routes = [
     ]
   },
   {
-    path: '**', // If there is any URL not found in the routing file, redirects to session/not-found.
+    // Redirect user to session/not-found if there is any URL not found in the routing file.
+    path: '**', // "**" specifies wildcard path that catches any non-existing routes [A].
     redirectTo: 'session/not-found' // Session is the parent route.
   }
-
 ];
 
 @NgModule({

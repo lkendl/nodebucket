@@ -14,7 +14,46 @@
 ===========================================
 */
 
-/* You can add global styles to this file, and also import other style files */
+@import "./theme";
+
+@include mat-core();
+
+html, body {
+  height: 100%;
+}
+
+
+body {
+  // background: linear-gradient(to bottom, black 50%, red 50%);
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.logo {
+  margin-top: 5px;
+}
+
+.toolbar {
+  margin-top: 15px;
+  height: 50px;
+  position: fixed;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.nav-menu {
+  margin: 5px;
+}
+
+.content-container {
+  margin: 25px auto auto;
+  width: 75%;
+}
+
+.gold {
+  color: #946B2D;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -13,55 +13,71 @@
 ; and Angular for user interactions" (Krasso, 2022).
 ===========================================
 -->
-<header>
-  <!-- navbar -->
-  <nav fxFlex>
-    <mat-toolbar style="border-bottom: 15px solid #D6A800; height: 10px;" color="primary">
-      <!-- navbar container -->
-      <div class="navbar-container">
-        <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>nodebucket</button>
 
-        <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" routerLink="/about" mat-button >About</button>
-        <button class="navbar-link" routerLink="/contact" mat-button >Contact Us</button>
+<body>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row class="nav-menu">
+
+      <!-- Logo -->
+      <div class="logo">
+        <a href="/"><img src="./assets/logo.png" height="60" /></a>
       </div>
 
+      <!-- Navigation -->
+      <div style="width: 80%" class="links">
+        <div fxLayout="row wrap" fxLayoutAlign="start">
+          <button mat-button routerLink="/">Home</button>
+          <button mat-button routerLink="/about">About</button>
+          <button mat-button routerLink="/contact">Contact Us</button>
+        </div>
 
-<div fxFlex></div>
-
-  <!-- main content -->
-      <div>
-        <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User profile menu">
-          <mat-icon>perm_identity</mat-icon>
-        </button>
-
-        <mat-menu #profileMenu>
-          <p style="padding: 10px; font-size: 16px; font-weight: lighter;">Logged in as {{ sessionName }}</p>
-          <button mat-menu-item (click)="logout()">
-            <mat-icon>logout</mat-icon>
-            <span>Log out</span>
+        <!-- Profile Menu -->
+        <div id="profile-container">
+          <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User profile menu">
+            <mat-icon>perm_identity</mat-icon>
           </button>
-        </mat-menu>
+
+          <mat-menu #profileMenu>
+            <p style="padding: 10px; font-size: 16px; font-weight: lighter;">Logged in as {{ sessionName }}</p>
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              <span>Log out</span>
+            </button>
+          </mat-menu>
+        </div>
       </div>
-    </mat-toolbar>
-  </nav>
-</header>
 
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-<main class="main-content" fxFlex="100%;">
-  <router-outlet></router-outlet>
-</main>
+  <br />
 
+  <!-- Main Content -->
+  <div fxLayout="row wrap">
+    <div fxFlex>
+      <mat-card class="content-container" color="accent, 50">
 
-<!-- footer -->
-<div fxFlex>
-  <footer class="footer">
-    <mat-toolbar class="footer-content">
-      <p>
-        &copy; {{year | date: 'yyyy'}} - nodebucket - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
-      </p>
-    </mat-toolbar>
-  </footer>
-</div>
+        <mat-card-content>
+          <router-outlet></router-outlet>
+        </mat-card-content>
 
+      </mat-card>
+    </div>
+  </div>
+
+  <br />
+
+  <!-- Main Footer -->
+  <div fxLayout="row wrap">
+    <div fxFlex>
+      <footer class="footer">
+        <mat-toolbar class="footer-content" color="primary">
+          <p>
+            &copy; {{year | date: 'yyyy'}} - nodebucket - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
+          </p>
+        </mat-toolbar>
+      </footer>
+    </div>
+  </div>
+
+</body>

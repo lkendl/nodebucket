@@ -1,0 +1,149 @@
+/**
+============================================
+; Title: nodebucket
+; File Name: gryffindor-theme.scss
+; Author: Professor Krasso
+; Date: 19 August 2022
+; Modified By: Laura Kendl
+; Description: "nodebucket is task management software designed to simplify the way you
+; create, track, edit, and delete time sensitive material. This is a full-stack
+; MEAN (MongoDB, Express, Angular, and Node.js) application, utilizing the concepts that
+; were taught in previous courses. MongoDB will be used for data persistence. Node.js
+; will be used for manipulating and returning saved records, SoapUI for unit testing,
+; and Angular for user interactions" (Krasso, 2022).
+; ===========================================
+*/
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-gryffindor-red: (
+    50 : #eee0e1,
+    100 : #d5b3b3,
+    200 : #ba8080,
+    300 : #9e4d4d,
+    400 : #892627,
+    500 : #740001,
+    600 : #6c0001,
+    700 : #610001,
+    800 : #570001,
+    900 : #440000,
+    A100 : #ff7979,
+    A200 : #ff4646,
+    A400 : #ff1313,
+    A700 : #f80000,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-gryffindor-yellow: (
+    50 : #fdf7e6,
+    100 : #faeac1,
+    200 : #f7dd98,
+    300 : #f3cf6e,
+    400 : #f1c44f,
+    500 : #eeba30,
+    600 : #ecb32b,
+    700 : #e9ab24,
+    800 : #e7a31e,
+    900 : #e29413,
+    A100 : #ffffff,
+    A200 : #fff1de,
+    A400 : #ffddab,
+    A700 : #ffd291,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-gryffindor-gold: (
+    50 : #f9f4e5,
+    100 : #f1e3bd,
+    200 : #e8d192,
+    300 : #debf66,
+    400 : #d7b145,
+    500 : #d0a324,
+    600 : #cb9b20,
+    700 : #c4911b,
+    800 : #be8816,
+    900 : #b3770d,
+    A100 : #fff3e0,
+    A200 : #ffdfad,
+    A400 : #ffca7a,
+    A700 : #ffc061,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-black: (
+    50 : #e0e0e0,
+    100 : #b3b3b3,
+    200 : #808080,
+    300 : #4d4d4d,
+    400 : #262626,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #a6a6a6,
+    A200 : #8c8c8c,
+    A400 : #737373,
+    A700 : #666666,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
