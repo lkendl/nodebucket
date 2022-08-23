@@ -71,4 +71,76 @@ router.get('/:empId', async(req, res) => {
   }
 })
 
+/**
+ * findAllTasks
+ */
+// Create an asynchronous API.
+router.get('/:empId/tasks', async(req, res) => {
+  try {
+    Employee.findOne({'empId': req.params.empId}, 'empId todo done', function(err, emp) {
+      if(err) {
+        console.log(err);
+        res.status(501).send({
+          'err': 'MongoDB server error: ' + err.message //
+        })
+      } else {
+        console.log(emp);
+        res.json(emp);
+      }
+    })
+
+      // Catch error so application won't crash. Return 500 server error inside user interface.
+    } catch(e) {
+      console.log(e);
+      res.status(500).send({
+        'err': 'Internal server error: ' + e.message
+    })
+  }
+})
+
+/**
+ * createTask
+ */
+router.post('/:empId/tasks', async(req, res) => {
+  try {
+    Employee.findOne({'empId': req.params.empId}, function(err, emp) {
+      // Simple error handling logic.
+      if(err) {
+        console.log(err);
+        res.status(501).send({
+          'err': 'MongoDB server error: ' + err.message
+        })
+      } else {
+        console.log(emp);
+
+        const newTask = {
+          text: req.body.text
+        }
+        // Push newTask onto employee array.
+        emp.todo.push(newTask);
+
+        // Save with Mongoose function and callback for the updated record.
+        emp.save(function(err, updatedEmp) {
+          if (err) {
+            console.log(err);
+            res.status(501).send({
+              'err': 'MongoDB server error: ' + err.essage
+            })
+          } else {
+            console.log(updatedEmp);
+            res.json(updatedEmp);
+          }
+        })
+      }
+    })
+
+  } catch(e){
+    console.log(e);
+    res.status(500).send({
+      'err': 'Internal server error: ' + e.message
+    })
+  }
+})
+
+
 module.exports = router;
