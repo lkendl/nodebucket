@@ -14,9 +14,13 @@
 ===========================================
 */
 
-//Model for users login that displays name.
+import { Item } from './item.interface';
+
+//Model for users.
 export interface Employee {
   empId: string;
   firstName: string;
   lastName: string;
+  todo: Item[];
+  done: Item[];
 }
