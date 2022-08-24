@@ -15,7 +15,7 @@ paths:
           required: true
           description: The empId requested by the user.
           schema:
-            type: string
+            type: number
       responses:
         '200':
           description: Employee document
@@ -23,53 +23,54 @@ paths:
           description: Server Exception
         '501':
           description: MongoDB Exception
-  #   post:
-  #     tags:
-  #     - Composers
-  #     description: API for adding new composer objects
-  #     summary: Creates a new composer object
-  #     requestBody:
-  #       required: true
-  #       content:
-  #         application/json:
-  #           schema:
-  #             type: object
-  #             description: Composer's information
-  #             required:
-  #               - firstName
-  #               - lastName
-  #             properties:
-  #               firstName:
-  #                 description: Composer's first name
-  #                 type: string
-  #               lastName:
-  #                 description: Composer's last name
-  #                 type: string
-  #     responses:
-  #       '200':
-  #         description: User added
-  #       '500':
-  #         description: Server Exception
-  #       '501':
-  #         description: MongoDB Exception
 
-  # /composers/{id}:
-  #   get:
-  #     tags:
-  #     - Composers
-  #     description: API for returning a single composer document from MongoDB.
-  #     summary: returns a composer document
-  #     parameters:
-  #       - name: id
-  #         in: path
-  #         required: true
-  #         description: The composerId requested by the user.
-  #         schema:
-  #           type: string
-  #     responses:
-  #       '200':
-  #         description: Composer document in JSON format
-  #       '500':
-  #         description: Server Exception
-  #       '501':
-  #         description: MongoDB Exception
+  /employees/{empId}/tasks:
+    get:
+      tags:
+        - Employees
+      description: API for returning an employee's array of tasks from MongoDB Atlas.
+      summary: returns an array of tasks
+      parameters:
+        - name: empId
+          in: path
+          required: true
+          description: The user's empId.
+          schema:
+          type: number
+      responses:
+        '200':
+          description: Employee document
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+    post:
+      tags:
+        - Employees
+      description: API to create a new task item by empId.
+      summary: Create a new task item by empId
+      parameters:
+        - name: empId
+          in: path
+          required: true
+          description: The user's empId
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - text
+              properties:
+                text:
+                  description: User's task input
+                  type: string
+      responses:
+        '200':
+          description: Employee document
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
