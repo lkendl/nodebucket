@@ -33,7 +33,7 @@ const router = express.Router();
  *       - name: empId
  *         in: path
  *         required: true
- *         description: The empId requested by the user.
+ *         description: The user's empId.
  *         schema:
  *         type: string
  *     responses:
@@ -45,9 +45,9 @@ const router = express.Router();
  *         description: MongoDB Exception
  */
 
-// empId is a requestParams placeholder. To access empId value, you must specify the name under the req.params object.
+// empId is a requestParams placeholder. Access empId value and specify the name under the req.params object.
 
-// Async fires and whatever finishes first, finishes first. The callback is when you handle the response from the asynchronous call. Use await to make a call to it. This is the observable so no await needed. If you want to CALL it, then use await.
+// Create an asynchronous findEmployeeById API.
 router.get('/:empId', async(req, res) => {
   try {
     // First param is the filter, pass the value is the second value.
@@ -73,8 +73,29 @@ router.get('/:empId', async(req, res) => {
 
 /**
  * findAllTasks
+ * @openapi
+ * /api/employees/{empId}/tasks:
+ *   get:
+ *     tags:
+ *       - Employees
+ *     description: API for returning an employee's array of tasks from MongoDB Atlas.
+ *     summary: returns an array of tasks
+ *     parameters:
+ *       - name: empId
+ *         in: path
+ *         required: true
+ *         description: The user's empId.
+ *         schema:
+ *         type: string
+ *     responses:
+ *       '200':
+ *         description: Employee tasks
+ *       '500':
+ *         description: Server Exception
+ *       '501':
+ *         description: MongoDB Exception
  */
-// Create an asynchronous API.
+// Create an asynchronous findAllTasks API.
 router.get('/:empId/tasks', async(req, res) => {
   try {
     Employee.findOne({'empId': req.params.empId}, 'empId todo done', function(err, emp) {
@@ -100,11 +121,44 @@ router.get('/:empId/tasks', async(req, res) => {
 
 /**
  * createTask
+ * @openapi
+ * /api/employees/{empId}/tasks:
+ *   post:
+ *     tags:
+ *       - Employees
+ *     description: API to create task by empId.
+ *     summary: Create task by empId
+ *     parameters:
+ *       - name: empId
+ *         in: path
+ *         required: true
+ *         description: The employee's ID
+ *         schema:
+ *           type: number
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             required:
+ *               - text
+ *             properties:
+ *              text:
+ *                description: User task input
+ *                type: string
+ *     responses:
+ *       '200':
+ *         description: Task added to empId
+ *       '500':
+ *         description: Server Exception
+ *       '501':
+ *         description: MongoDB Exception
  */
+// Create an asynchronous createTask API.
 router.post('/:empId/tasks', async(req, res) => {
   try {
     Employee.findOne({'empId': req.params.empId}, function(err, emp) {
-      // Simple error handling logic.
+      // Define simple error handling logic.
       if(err) {
         console.log(err);
         res.status(501).send({
@@ -116,15 +170,15 @@ router.post('/:empId/tasks', async(req, res) => {
         const newTask = {
           text: req.body.text
         }
-        // Push newTask onto employee array.
+        // Push newTask onto todo array.
         emp.todo.push(newTask);
 
-        // Save with Mongoose function and callback for the updated record.
+        // Save with Mongoose function and callback the updated record.
         emp.save(function(err, updatedEmp) {
           if (err) {
             console.log(err);
             res.status(501).send({
-              'err': 'MongoDB server error: ' + err.essage
+              'err': 'MongoDB server error: ' + err.message
             })
           } else {
             console.log(updatedEmp);
@@ -141,6 +195,5 @@ router.post('/:empId/tasks', async(req, res) => {
     })
   }
 })
-
 
 module.exports = router;
