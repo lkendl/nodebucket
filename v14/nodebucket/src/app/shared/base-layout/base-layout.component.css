@@ -20,14 +20,24 @@ body {
 
 .nav-menu {
   width: 100%;
-  /* margin: 0 auto; */
+}
+
+.logo-container {
+  /* margin-left: 0px;
+  font-size: 24px;
+  font-weight: lighter; */
+  margin-top: 25px;
+  /* margin-left: -10px; */
+  z-index: 999;
+  /* background-color: #000; */
+  /* border: #000 1px solid; */
   text-align: center;
+  filter: drop-shadow(2px 2px 2px black);
 }
 
 .logo {
-  margin-left: 75px;
-  font-size: 24px;
-  font-weight: lighter;
+  border: #000 1px solid;
+  max-width: 75px;
 }
 
 .links {
@@ -44,7 +54,8 @@ body {
 }
 
 #profile-container {
-  float: right;
+  position: absolute;
+  margin-left: 70%;
 }
 
 .main-content {
