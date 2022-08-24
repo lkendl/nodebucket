@@ -15,27 +15,34 @@
 -->
 
 <body>
+
+<div class="top-bar" fxLayout="row" fxLayoutGap="20" fxLayout.xs="column">
+
   <mat-toolbar color="primary">
     <mat-toolbar-row class="nav-menu">
 
-      <!-- Logo -->
-      <div class="logo">
-        <a href="/"><img src="./assets/logo.png" height="60" /></a>
-      </div>
+        <!-- Logo -->
+        <div class="logo-container" fxFlex="20">
+          <a href="/"><img src="./assets/logo.png" class="logo" /></a>
+        </div>
 
       <!-- Navigation -->
-      <div style="width: 80%" class="links">
+      <div class="links" fxFlex="70">
         <div fxLayout="row wrap" fxLayoutAlign="start">
+
           <button mat-button routerLink="/">Home</button>
           <button mat-button routerLink="/about">About</button>
           <button mat-button routerLink="/contact">Contact Us</button>
+
         </div>
 
+
         <!-- Profile Menu -->
-        <div id="profile-container">
+        <div id="profile-container" fxFlex="10">
           <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User profile menu">
             <mat-icon>perm_identity</mat-icon>
           </button>
+        </div>
 
           <mat-menu #profileMenu>
             <p style="padding: 10px; font-size: 16px; font-weight: lighter;">Logged in as {{ sessionName }}</p>
@@ -45,10 +52,10 @@
             </button>
           </mat-menu>
         </div>
-      </div>
 
     </mat-toolbar-row>
   </mat-toolbar>
+</div>
 
   <br />
 
