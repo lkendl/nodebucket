@@ -27,9 +27,9 @@ export class TaskService {
   /**
    * findAllTasks
    */
+  // Return an observable.
   findAllTasks(empId: string): Observable<any> {
     return this.http.get('api/employees/' + empId + '/tasks');
-
   }
 
   /**
