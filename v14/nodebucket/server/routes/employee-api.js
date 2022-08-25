@@ -114,15 +114,7 @@ router.get('/:empId/tasks', async(req, res) => {
         res.status(501).send(mongoResponse.toObject());
       } else {
         console.log(emp);
-        if (emp) {
-          const findAllTasksResponse = new BaseResponse(200, 'Query successful', emp);
-          res.json(findAllTasksResponse.toObject());
-          // If employee cannot be found (ex: 1016)
-        } else {
-          const notFoundEmployeeResponse = new BaseResponse(200, 'Invalid employee ID. Please try again.', null);
-          console.log(notFoundEmployeeResponse.toObject());
-          res.json(notFoundEmployeeResponse.toObject());
-        }
+        res.json(emp);
       }
     })
 
@@ -131,8 +123,8 @@ router.get('/:empId/tasks', async(req, res) => {
       console.log(e);
       const errorResponse = new BaseResponse(500, 'Internal Server error!', e);
       res.status(500).send(errorResponse.toObject());
-    }
-  })
+  }
+})
 
 /**
  * createTask
@@ -180,15 +172,6 @@ router.post('/:empId/tasks', async(req, res) => {
         res.status(501).send(mongoResponse.toObject());
       } else {
         console.log(emp);
-        if (emp) {
-          const findAllTasksResponse = new BaseResponse(200, 'Query successful', emp);
-          res.json(findAllTasksResponse.toObject());
-          // If employee cannot be found (ex: 1016)
-        } else {
-          const notFoundEmployeeResponse = new BaseResponse(200, 'Invalid employee ID. Please try again.', null);
-          console.log(notFoundEmployeeResponse.toObject());
-          res.json(notFoundEmployeeResponse.toObject());
-        }
 
         const newTask = {
           text: req.body.text
@@ -210,7 +193,6 @@ router.post('/:empId/tasks', async(req, res) => {
       }
     })
 
-  // Catch error so application won't crash. Return 500 server error inside user interface.
   } catch(e){
     console.log(e);
     const errorResponse = new BaseResponse(500, 'Internal Server error!', e);
