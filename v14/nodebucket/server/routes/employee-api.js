@@ -17,6 +17,7 @@
 // Require JavaScript libraries.
 const express = require('express');
 const Employee = require('../models/employee');
+const BaseResponse = require('../models/base-response');
 
 const router = express.Router();
 
@@ -52,22 +53,30 @@ router.get('/:empId', async(req, res) => {
   try {
     // First param is the filter, pass the value is the second value.
     Employee.findOne({'empId': req.params.empId}, function(err, emp) {
-      // Check if error.
       if (err) {
-        console.log(err);
-        res.status(501).send({
-          'err': 'MongoDB Server Error: ' + err.message
-        })
+        const mongoResponse = new BaseResponse(501, 'MongoDB Server Error', err);
+        console.log(mongoResponse.toObject());
+        res.status(501).send(mongoResponse.toObject());
+
       } else {
         console.log(emp);
-        res.json(emp);
+        // If employee exists in MongoDB
+        if (emp) {
+          const findEmployeeByIdResponse = new BaseResponse(200, 'Query successful', emp);
+          res.json(findEmployeeByIdResponse.toObject());
+          // If employee cannot be found (ex: 1016)
+        } else {
+          const notFoundEmployeeResponse = new BaseResponse(200, 'Invalid employee ID. Please try again.', null);
+          console.log(notFoundEmployeeResponse.toObject());
+          res.json(notFoundEmployeeResponse.toObject());
+        }
+
       }
     })
   } catch (e) {
     console.log(e);
-    response.status(500).send({
-      'err': 'Internal server error!'
-    })
+    const errorResponse = new BaseResponse(500, 'Internal Server error!', e);
+    res.status(500).send(errorResponse.toObject());
   }
 })
 
@@ -100,24 +109,30 @@ router.get('/:empId/tasks', async(req, res) => {
   try {
     Employee.findOne({'empId': req.params.empId}, 'empId todo done', function(err, emp) {
       if(err) {
-        console.log(err);
-        res.status(501).send({
-          'err': 'MongoDB server error: ' + err.message //
-        })
+        const mongoResponse = new BaseResponse(501, 'MongoDB Server Error', err);
+        console.log(mongoResponse.toObject());
+        res.status(501).send(mongoResponse.toObject());
       } else {
         console.log(emp);
-        res.json(emp);
+        if (emp) {
+          const findAllTasksResponse = new BaseResponse(200, 'Query successful', emp);
+          res.json(findAllTasksResponse.toObject());
+          // If employee cannot be found (ex: 1016)
+        } else {
+          const notFoundEmployeeResponse = new BaseResponse(200, 'Invalid employee ID. Please try again.', null);
+          console.log(notFoundEmployeeResponse.toObject());
+          res.json(notFoundEmployeeResponse.toObject());
+        }
       }
     })
 
       // Catch error so application won't crash. Return 500 server error inside user interface.
     } catch(e) {
       console.log(e);
-      res.status(500).send({
-        'err': 'Internal server error: ' + e.message
-    })
-  }
-})
+      const errorResponse = new BaseResponse(500, 'Internal Server error!', e);
+      res.status(500).send(errorResponse.toObject());
+    }
+  })
 
 /**
  * createTask
@@ -160,12 +175,20 @@ router.post('/:empId/tasks', async(req, res) => {
     Employee.findOne({'empId': req.params.empId}, function(err, emp) {
       // Define simple error handling logic.
       if(err) {
-        console.log(err);
-        res.status(501).send({
-          'err': 'MongoDB server error: ' + err.message
-        })
+        const mongoResponse = new BaseResponse(501, 'MongoDB Server Error', err);
+        console.log(mongoResponse.toObject());
+        res.status(501).send(mongoResponse.toObject());
       } else {
         console.log(emp);
+        if (emp) {
+          const findAllTasksResponse = new BaseResponse(200, 'Query successful', emp);
+          res.json(findAllTasksResponse.toObject());
+          // If employee cannot be found (ex: 1016)
+        } else {
+          const notFoundEmployeeResponse = new BaseResponse(200, 'Invalid employee ID. Please try again.', null);
+          console.log(notFoundEmployeeResponse.toObject());
+          res.json(notFoundEmployeeResponse.toObject());
+        }
 
         const newTask = {
           text: req.body.text
@@ -176,10 +199,9 @@ router.post('/:empId/tasks', async(req, res) => {
         // Save with Mongoose function and callback the updated record.
         emp.save(function(err, updatedEmp) {
           if (err) {
-            console.log(err);
-            res.status(501).send({
-              'err': 'MongoDB server error: ' + err.message
-            })
+            const mongoResponse = new BaseResponse(501, 'MongoDB Server Error', err);
+            console.log(mongoResponse.toObject());
+            res.status(501).send(mongoResponse.toObject());
           } else {
             console.log(updatedEmp);
             res.json(updatedEmp);
@@ -188,11 +210,11 @@ router.post('/:empId/tasks', async(req, res) => {
       }
     })
 
+  // Catch error so application won't crash. Return 500 server error inside user interface.
   } catch(e){
     console.log(e);
-    res.status(500).send({
-      'err': 'Internal server error: ' + e.message
-    })
+    const errorResponse = new BaseResponse(500, 'Internal Server error!', e);
+    res.status(500).send(errorResponse.toObject());
   }
 })
 
