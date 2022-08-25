@@ -32,19 +32,20 @@ export class HomeComponent implements OnInit {
   todo: Item[];
   done: Item[];
   empId: string;
+  sessionName: string;
 
   taskForm: FormGroup = this.fb.group({
 
     task: [null, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(35)])]
   })
 
-  //
   constructor(private fb: FormBuilder, private cookieService: CookieService, private taskService: TaskService) {
     // Initialize the variables.
     this.empId = this.cookieService.get('session_user'), 10;
     this.employee = {} as Employee;
     this.todo = [];
     this.done = [];
+    this.sessionName = this.cookieService.get('session_name');
 
     // Subscribe to the taskService observable (task.service.ts).
     this.taskService.findAllTasks(this.empId).subscribe({
