@@ -15,6 +15,11 @@
 */
 
 import { Component, OnInit } from '@angular/core';
+import { Employee } from '../../shared/models/employee.interface';
+import { Item } from '../../shared/models/item.interface';
+import { CookieService } from 'ngx-cookie-service';
+import { TaskService } from 'src/app/shared/services/task.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -23,9 +28,63 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  employee: Employee;
+  todo: Item[];
+  done: Item[];
+  empId: string;
+
+  taskForm: FormGroup = this.fb.group({
+
+    task: [null, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(35)])]
+  })
+
+  //
+  constructor(private fb: FormBuilder, private cookieService: CookieService, private taskService: TaskService) {
+    // Initialize the variables.
+    this.empId = this.cookieService.get('session_user'), 10;
+    this.employee = {} as Employee;
+    this.todo = [];
+    this.done = [];
+
+    // Subscribe to the taskService observable (task.service.ts).
+    this.taskService.findAllTasks(this.empId).subscribe({
+      next: (res) => {
+        this.employee = res;
+        console.log(this.employee);
+
+      },
+      error: (e) => {
+        console.log(e.message);
+      },
+      complete: () => {
+        this.todo = this.employee.todo;
+        this.done = this.employee.done;
+      }
+    })
+   }
 
   ngOnInit(): void {
   }
 
+  // Create function to create a task.
+
+  createTask() {
+    const newTask = this.taskForm.controls['task'].value;
+
+    // Call service
+    this.taskService.createTask(this.empId, newTask).subscribe({
+      next: (res) => {
+        this.employee = res;
+        console.log(this.employee);
+      },
+      error: (e) => {
+        console.log(e);
+      },
+      complete: () => {
+        this.todo = this.employee.todo;
+        this.done = this.employee.done;
+        this.taskForm.controls['task'].setErrors({'incorrect': false}); // Clears errors in form.
+      }
+    })
+  }
 }
