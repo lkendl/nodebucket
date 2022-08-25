@@ -40,7 +40,10 @@ export class LoginComponent implements OnInit {
     empId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])] // Adds Angular's built-in Validator to the form.
   })
 
+  // Add dependency injections for FormBuilder, Router, cookieService and sessionService.
   constructor(private fb: FormBuilder, private router: Router, private cookieService: CookieService, private sessionService: SessionService) {
+
+    // this.fb = new FormBuilder(); <- dependency injection
 
     // Define Employee object as an empty Employee object.
     this.employee = {} as Employee;
@@ -60,10 +63,11 @@ export class LoginComponent implements OnInit {
     this.sessionService.findEmployeeById(empId).subscribe({
 
       next: (res) => {
-        // If there is a value inside emp, it will be true here. If true, add to cookie service.
-        if (res) {
+        // If there is a value inside emp, it will be true here. If true, add to cookie service. Use .data property from the baseResponse object.
+        if (res.data) {
+
           // Store response data inside the empty employee object.
-          this.employee = res;
+          this.employee = res.data;
           // Give cookie. 1 specifies one day.
           this.cookieService.set('session_user', this.employee.empId, 1); // Note: If this.employee.empId gives error: type 'number' is not assignable to parameter of type 'string', change to string: this.employee.empId.toString()
 
@@ -79,7 +83,7 @@ export class LoginComponent implements OnInit {
             {
               severity: 'error',
               summary: 'Error',
-              detail: 'Please enter a valid empId to continue.'
+              detail: res.message // Displays server error message.
             }
           ]
         }
@@ -90,7 +94,7 @@ export class LoginComponent implements OnInit {
           {
             severity: 'error',
             summary: 'Error',
-            detail: e.message // Displays server error messages defined in employee-api.js.
+            detail: e.data // Displays catch(e) object.
           }
         ]
       }
