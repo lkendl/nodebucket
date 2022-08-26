@@ -48,11 +48,11 @@
           Task is a required field.
         </mat-error>
 
-        <mat-error *ngIf="taskForm.controls['task'].hasError('minLength') && taskForm.controls['task'].touched">
+        <mat-error *ngIf="taskForm.controls['task'].hasError('minlength') && taskForm.controls['task'].touched">
           The task field must be at least 3 characters in length.
         </mat-error>
 
-        <mat-error *ngIf="taskForm.controls['task'].hasError('maxLength') && taskForm.controls['task'].touched">
+        <mat-error *ngIf="taskForm.controls['task'].hasError('maxlength') && taskForm.controls['task'].touched">
           The task field cannot exceed 35 characters in length.
         </mat-error>
       </form>
