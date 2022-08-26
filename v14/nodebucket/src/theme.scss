@@ -11,6 +11,9 @@
 ; were taught in previous courses. MongoDB will be used for data persistence. Node.js
 ; will be used for manipulating and returning saved records, SoapUI for unit testing,
 ; and Angular for user interactions" (Krasso, 2022).
+; Resources:
+; [REF A] Octoperf: https://octoperf.com/blog/2021/01/08/angular-material-multiple-themes/
+; #configure-the-themes (Angular: How to Use Multiple Themes with Material?)
 ; ===========================================
 */
 
@@ -35,16 +38,22 @@ $nodebucket-dark-accent: mat-palette($mat-green, 400);
 
 $gryffindor-primary: mat-palette($md-black, 500);
 $gryffindor-accent: mat-palette($md-gryffindor-red, 400);
-$gryffindor-accent-secondary: mat-palette($md-gryffindor-gold, 400);
+
+$gryffindor-extra-primary: mat-palette($md-gryffindor-yellow, 500);
+$gryffindor-extra-accent: mat-palette($md-gryffindor-gold, 500);
 
 $gryffindor-dark-primary: mat-palette($md-gryffindor-red, 400);
 $gryffindor-dark-accent: mat-palette($md-gryffindor-gold, 400);
-$gryffindor-dark-accent-secondary: mat-palette($md-gryffindor-gold, 400);
+
+$gryffindor-extra-dark-primary: mat-palette($md-gryffindor-yellow, 800);
+$gryffindor-extra-dark-accent: mat-palette($md-gryffindor-gold, 800);
+
 $gryffindor-background-color: map_get($md-gryffindor-red, 500);
 
 // The warn palette is optional (defaults to red).
 $nodebucket-warn: mat-palette($mat-red);
 $nodebucket-dark-warn: mat-palette($mat-red, 400);
+
 $gryffindor-warn: mat-palette($md-gryffindor-gold, 400);
 $gryffindor-dark-warn: mat-palette($md-gryffindor-gold, 400);
 
@@ -73,7 +82,15 @@ $gryffindor-theme: mat-light-theme(
     color: (
       primary: $gryffindor-primary,
       accent: $gryffindor-accent,
-      secondary: $gryffindor-accent-secondary,
+      warn: $gryffindor-warn,
+    ),
+  )
+);
+$gryffindor-extra-theme: mat-light-theme(
+  (
+    color: (
+      primary: $gryffindor-extra-primary,
+      accent: $gryffindor-extra-accent,
       warn: $gryffindor-warn,
     ),
   )
@@ -83,7 +100,6 @@ $gryffindor-dark-theme: mat-dark-theme(
     color: (
       primary: $gryffindor-dark-primary,
       accent: $gryffindor-dark-accent,
-      secondary: $gryffindor-dark-accent-secondary,
       warn: $gryffindor-dark-warn,
     ),
   )
@@ -100,3 +116,7 @@ $gryffindor-dark-theme: mat-dark-theme(
 // @include angular-material-theme($nodebucket-theme);
 // @include angular-material-theme($nodebucket-dark-theme);
 @include angular-material-theme($gryffindor-theme);
+
+.extra-theme { // [REF A]: Applies to HTML with the extra-theme class.
+  @include angular-material-theme($gryffindor-extra-theme);
+}

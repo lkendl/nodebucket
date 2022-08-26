@@ -29,13 +29,15 @@
 }
 
 .task-container {
-  width: 35%;
+  min-width: 50%;
+  max-width: 75%;
   margin: 0 auto;
 }
 
 .task-column {
   border: 1px solid #ccc;
   min-height: 68px;
+  min-width: 50%;
   background: #FFF;
   border-radius: 4px;
   overflow: hidden;

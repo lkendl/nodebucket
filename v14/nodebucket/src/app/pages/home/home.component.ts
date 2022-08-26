@@ -68,7 +68,6 @@ export class HomeComponent implements OnInit {
   }
 
   // Create function to create a task.
-
   createTask() {
     const newTask = this.taskForm.controls['task'].value;
 

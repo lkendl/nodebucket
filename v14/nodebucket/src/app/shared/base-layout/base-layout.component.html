@@ -19,26 +19,21 @@
 <div class="top-bar" fxLayout="row" fxLayoutGap="20" fxLayout.xs="column">
 
   <mat-toolbar color="primary">
-    <mat-toolbar-row class="nav-menu">
+    <mat-toolbar-row>
 
         <!-- Logo -->
         <div class="logo-container" fxFlex="20">
           <a href="/"><img src="./assets/logo.png" class="logo" /></a>
         </div>
 
-      <!-- Navigation -->
-      <div class="links" fxFlex="70">
-        <div fxLayout="row wrap" fxLayoutAlign="start">
-
-          <button mat-button routerLink="/">Home</button>
-          <button mat-button routerLink="/about">About</button>
-          <button mat-button routerLink="/contact">Contact Us</button>
-
+        <!-- Logo Text -->
+        <div class="logo_text-container">
+          <img src="./assets/logo_text.png" class="logo_text">
         </div>
 
 
         <!-- Profile Menu -->
-        <div id="profile-container" fxFlex="10">
+        <div id="profile-container">
           <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User profile menu">
             <mat-icon>perm_identity</mat-icon>
           </button>
@@ -51,7 +46,25 @@
               <span>Log out</span>
             </button>
           </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+
+<div class="nav-bar" fxLayout="row" fxLayoutGap="20" fxLayout.xs="column">
+
+  <mat-toolbar class="nav-menu">
+    <mat-toolbar-row>
+
+      <!-- Navigation -->
+      <div class="links" fxFlex="70">
+        <div fxLayout="row wrap" fxLayoutAlign="start">
+
+          <button mat-button routerLink="/">Home</button>
+          <button mat-button routerLink="/about">About</button>
+          <button mat-button routerLink="/contact">Contact Us</button>
+
         </div>
+      </div>
 
     </mat-toolbar-row>
   </mat-toolbar>

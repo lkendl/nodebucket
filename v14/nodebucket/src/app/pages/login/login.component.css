@@ -14,6 +14,11 @@
 ===========================================
 */
 
+body {
+  /* background-color: toli#740001!important; */
+  background: linear-gradient(180deg, #000 30%, #740001 0%, #740001 100%);
+}
+
 .login-container {
   width: 35%;
   margin: 20% auto;
