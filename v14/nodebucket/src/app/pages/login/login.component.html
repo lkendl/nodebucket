@@ -16,7 +16,38 @@
 
 <body>
 
+
 <div fxLayout="column">
+
+<!--
+  <div class="logo-container">
+    <a href="/"><img src="./assets/logo.png" class="logo" /></a>
+  </div>
+
+
+  <div class="logo_text-container">
+    <img src="./assets/logo_text.png" class="logo_text">
+  </div> -->
+<!--
+  <mat-card fxFlex class="logo-container">
+    <a href="/"><img src="./assets/logo.png" class="logo" /></a>
+  </mat-card>
+
+  <mat-card fxFlex class="logo-container">
+    <a href="/"><img src="./assets/logo.png" class="logo_text" /></a>
+  </mat-card> -->
+
+  <mat-card fxFlex class="logo-container mat-elevation-z0">
+
+    <mat-card-content class="logo-img-container">
+        <a href="/"><img src="./assets/logo.png" class="logo-img" /></a>
+    </mat-card-content>
+
+    <mat-card-content class="logo-text-container">
+      <img src="./assets/logo_text.png" class="logo-text">
+    </mat-card-content>
+
+  </mat-card>
 
   <mat-card fxFlex class="login-container mat-elevation-z8">
 
@@ -33,7 +64,7 @@
       </mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content>
+    <mat-card-content class="form-container">
 
       <!-- Set error messages defined in login.component.ts file. -->
       <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
@@ -43,10 +74,10 @@
         <!--Form field that calls to FormField defined in login.component.ts and an ngSubmit call to the submit function.-->
         <form [formGroup]="loginForm" (ngSubmit)="login(); loginForm.reset();">
 
-        <mat-card-content class="mat-elevation-z0">
+        <mat-card-content class="mat-elevation-z0" style="width: 100%;">
 
           <!-- Begin form. -->
-          <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-form-field appearance="fill">
             <input matInput
                   formControlName="empId"
                   placeholder="Employee ID" />
@@ -68,7 +99,7 @@
 
         <mat-card-actions>
           <!--Disable button when the form is invalid.-->
-          <button type="submit" fxFlex mat-raised-button [disabled]="!loginForm.valid" color="primary" style="height: 50px; font-size: 18px;">Log in</button>
+          <button type="submit" fxFlex mat-raised-button [disabled]="!loginForm.valid" color="primary" style="height: 50px; font-size: 18px;">Log In</button>
         </mat-card-actions>
       </form>
       </mat-card>
