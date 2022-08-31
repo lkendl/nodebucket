@@ -16,6 +16,8 @@
 
 <body>
 
+<div class="page-container">
+
 <div class="top-bar" fxLayout="row" fxLayoutGap="20" fxLayout.xs="column">
 
   <mat-toolbar color="primary">
@@ -51,23 +53,16 @@
 </div>
 
 <div class="nav-bar" fxLayout="row" fxLayoutGap="20" fxLayout.xs="column">
+  <!-- Navigation -->
+  <div class="links" fxFlex="70">
+    <div fxLayout="row wrap" fxLayoutAlign="start">
 
-  <mat-toolbar class="nav-menu">
-    <mat-toolbar-row>
+      <button mat-button routerLink="/">Home</button>
+      <button mat-button routerLink="/about">About</button>
+      <button mat-button routerLink="/contact">Contact Us</button>
 
-      <!-- Navigation -->
-      <div class="links" fxFlex="70">
-        <div fxLayout="row wrap" fxLayoutAlign="start">
-
-          <button mat-button routerLink="/">Home</button>
-          <button mat-button routerLink="/about">About</button>
-          <button mat-button routerLink="/contact">Contact Us</button>
-
-        </div>
-      </div>
-
-    </mat-toolbar-row>
-  </mat-toolbar>
+    </div>
+  </div>
 </div>
 
   <br />
@@ -100,4 +95,5 @@
     </div>
   </div>
 
+</div>
 </body>

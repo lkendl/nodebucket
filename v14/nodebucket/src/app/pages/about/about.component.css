@@ -28,10 +28,6 @@
   margin: 30px auto 40px;
 }
 
-.composer-biography {
-  width: 75%;
-}
-
 .about-img-container {
   margin: auto;
 }
@@ -48,14 +44,14 @@
 
 .about-txt-container {
   margin-top: 20px;
-}
-
-.about-container {
-  width: 60%;
+  max-width: 70%;
   margin: auto auto;
-  line-height: 2;
 }
 
 p {
   text-indent: 10%;
+}
+
+.text {
+  line-height: 1.9;
 }

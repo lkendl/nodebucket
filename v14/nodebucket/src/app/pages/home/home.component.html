@@ -14,13 +14,16 @@
 ===========================================
 -->
 
-<div fxLayout ="column" class="main-welcome">
+<div fxLayout="column" class="main-welcome">
 
   <div fxFlex>
-    <h1 class="title"> Greetings, {{ sessionName }}!
+    <h1 class="title"> Welcome to nodebucket, {{ sessionName }}!
     <br />
+    <hr style="width: 50%;">
     <span class="subtitle">
-      Welcome to nodebucket!
+      Ready to make life a little simpler? It's easy!
+      <br />
+      Just enter your tasks below. Drag your finished <b>ToDo</b> tasks to the <b>Done</b> column when finished!
     </span>
   </h1>
 </div>
@@ -125,4 +128,12 @@
     <!-- End of second row-->
   </div>
 </div>
+<hr style="width: 50%;">
+<span class="subtitle">
+  <i>Questions?</i>
+  <br /><br />
+  <button routerLink="/contact">Contact Us</button>
+  <br /><br />
+  nodebucket's genius developer, Dwight Schrute, will be more than happy to assist you.
+</span>
 </div>

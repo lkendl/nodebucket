@@ -14,8 +14,10 @@
 ===========================================
 */
 
-body {
-  background-color: #740001!important;
+.page-container {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #000 10%, #740001 0%, #740001 100%);
 }
 
 .top-bar {
@@ -23,38 +25,31 @@ body {
   height: 80px;
 }
 
-.nav-menu {
-  background-color: #eeba30;
-  color: #FFF;
-}
-
 .nav-bar {
   background-color: #eeba30;
+  color: #FFF;
+  margin-top: 10px;
 }
 
-
 .logo-container {
-  /* margin-left: 0px;
-  font-size: 24px;
-  font-weight: lighter; */
+  position: absolute;
+  margin-left: 8vmax;
   margin-top: 25px;
-  /* margin-left: -10px; */
   z-index: 999;
-  /* background-color: #000; */
-  /* border: #000 1px solid; */
   text-align: center;
   filter: drop-shadow(2px 2px 2px black);
 }
 
 .logo {
   border: #000 1px solid;
-  max-width: 75px;
-  margin-top: 50px;
+  max-width: 50px;
+  margin-top: 25px;
 }
 
 .logo_text-container {
+  position: absolute;
   margin-top: 50px;
-  margin-left: -35px;
+  margin-left: 12vmax;
 }
 
 .logo_text {
@@ -62,12 +57,8 @@ body {
 }
 
 .links {
-  margin: 0px 0px 0px 15%; /* T R B L */
+  margin: 0 0 0 12vmax; /* T R B L */
 }
-
-/* .navbar-container {
-  padding: 5px;
-} */
 
 .navbar-link {
   font-size: 24px;
@@ -78,6 +69,10 @@ body {
   position: absolute;
   margin-left: 80%;
   margin-top: 40px;
+}
+
+.content-container {
+  margin-bottom: 100px;
 }
 
 .main-content {
@@ -99,6 +94,7 @@ body {
 
 .bu-link {
   text-decoration: none;
+  color: #eeba30
 }
 
 .bu-link:hover {
