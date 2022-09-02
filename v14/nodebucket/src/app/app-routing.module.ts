@@ -37,15 +37,17 @@ const routes: Routes = [
       {
         path: '', // Anyone that follows the BaseLayoutComponent, they will be using the BaseLayout in all of the child components of that Base component.
         component: HomeComponent,
-        canActivate: [AuthGuard] // Adds AuthGuard to parent.
+        canActivate: [AuthGuard]
       },
       {
         path: 'about',
-        component: AboutComponent
+        component: AboutComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'contact',
-        component: ContactComponent
+        component: ContactComponent,
+        canActivate: [AuthGuard]
       },
     ]
   },
