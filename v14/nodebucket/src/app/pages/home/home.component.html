@@ -17,8 +17,12 @@
 <div fxLayout="column" class="main-welcome">
 
   <div fxFlex>
-    <h1 class="title"> Welcome to nodebucket, {{ sessionName }}!
+    <h1 class="title"> Welcome to nodebucket,
+      <br />
+      {{ sessionName }}!
+
     <br />
+
     <hr style="width: 50%;">
     <span class="subtitle">
       Ready to make life a little simpler? It's easy!
@@ -79,8 +83,19 @@
 
         <mat-card-content>
 
-          <div class="task-column">
-            <div *ngFor="let item of todo">
+          <!-- todo -->
+          <div
+            fxLayout="column"
+            fxLayoutGap="10px"
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="todo"
+            [cdkDropListConnectedTo]="[doneList]"
+            (cdkDropListDropped)="drop($event)"
+            class="task-column">
+
+            <!-- Add qualifier cdkDrag to make section drag. Will be applied to all cards due to for loop. -->
+            <div *ngFor="let item of todo" cdkDrag>
               <mat-card class="mat-elevation-z0 task-card">
                 <mat-card-content>
 
@@ -88,6 +103,13 @@
                     <div fxFlex>
                       {{ item.text }}
                     </div>
+
+                    <div fxFlex fxLayoutAlign="end" style="margin-top: -7px;">
+                      <button mat-icon-button (click)="deleteTask(item._id)">
+                        <mat-icon color="warn">delete</mat-icon>
+                      </button>
+                    </div>
+
                   </div>
 
                 </mat-card-content>
@@ -109,8 +131,19 @@
 
         <mat-card-content>
 
-          <div class="task-column">
-            <div *ngFor="let item of done">
+          <!-- Done -->
+          <div class="task-column"
+            fxLayout="column"
+            fxLayoutGap="10px"
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="done"
+            [cdkDropListConnectedTo]="[todoList]"
+            (cdkDropListDropped)="drop($event)"
+            class="task-column">
+
+            <!-- Add qualifier cdkDrag to make section drag. Will be applied to all cards due to for loop. -->
+            <div *ngFor="let item of done" cdkDrag>
 
               <mat-card class="mat-elevation-z0 task-card">
                 <div fxLayout="row">
@@ -118,6 +151,13 @@
                   <div fxFlex>
                     {{ item.text }}
                   </div>
+
+                  <div fxFlex fxLayoutAlign="end" style="margin-top: -7px;">
+                    <button mat-icon-button (click)="deleteTask(item._id)">
+                      <mat-icon color="warn">delete</mat-icon>
+                    </button>
+                  </div>
+
                 </div>
               </mat-card>
             </div>
@@ -130,10 +170,14 @@
 </div>
 <hr style="width: 50%;">
 <span class="subtitle">
+  <br />
   <i>Questions?</i>
   <br /><br />
   <button routerLink="/contact">Contact Us</button>
   <br /><br />
   nodebucket's genius developer, Dwight Schrute, will be more than happy to assist you.
 </span>
+
+
+<br />
 </div>

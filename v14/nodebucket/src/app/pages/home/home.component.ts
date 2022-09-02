@@ -20,6 +20,10 @@ import { Item } from '../../shared/models/item.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { TaskService } from 'src/app/shared/services/task.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogData } from '../../shared/models/dialog-data.interface';
+import { ConfirmDialogComponent } from './../../shared/confirm-dialog/confirm-dialog.component';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +43,7 @@ export class HomeComponent implements OnInit {
     task: [null, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(35)])]
   })
 
-  constructor(private fb: FormBuilder, private cookieService: CookieService, private taskService: TaskService) {
+  constructor(private fb: FormBuilder, private cookieService: CookieService, private taskService: TaskService, private dialog: MatDialog) {
     // Initialize the variables.
     this.empId = this.cookieService.get('session_user'), 10;
     this.employee = {} as Employee;
@@ -86,5 +90,79 @@ export class HomeComponent implements OnInit {
         this.taskForm.controls['task'].setErrors({'incorrect': false}); // Clears errors in form.
       }
     })
+  }
+
+// Create function to delete a task. Pass taskId string over interface.
+deleteTask(taskId: string) {
+  // Create interface object to pass over the application.
+  let dialogData = {} as DialogData;
+  dialogData.header = 'Delete Record Dialog';
+  dialogData.body = 'Are you sure you want to delete this record?';
+
+  // Open dialog. Pass over dialogData.
+  const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    data: dialogData,
+    // Set dialog to not close until user answers option.
+    disableClose: true
+
+  })
+
+  // If dialog closes, subscribe to event.
+  dialogRef.afterClosed().subscribe({
+    next: (result) => {
+      // If response is confirm, call delete task service.
+      if (result === 'confirm') {
+        this.taskService.deleteTask(this.empId, taskId).subscribe({
+          next: (res) => {
+            this.employee = res.data
+          },
+          error: (e) => {
+            console.log(e);
+          },
+          // After next and error complete, take todo array and done array and assign them to variables.
+          complete: () => {
+            this.todo = this.employee.todo;
+            this.done = this.employee.done;
+          }
+        })
+      }
+    }
+  })
+}
+
+// Create event to handle user dragging and dropping items.
+drop(event: CdkDragDrop<any[]>) {
+  // Create an event when items are dragged in same container.
+  if (event.previousContainer === event.container) {
+    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    console.log('Reordered tasks in the same column');
+    // If user moves to the same container, update the items.
+    this.updateTaskList(this.empId, this.todo, this.done);
+  } else {
+    transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
+
+    console.log('Moved tasks to a new column');
+    this.updateTaskList(this.empId, this.todo, this.done);
+  }
+
+  // Handle events when items are dragged into another container.
+}
+  // Create a function to make a call to API.
+  updateTaskList(empId: string, todo: Item[], done: Item[]): void {
+    this.taskService.updateTask(empId, todo, done).subscribe({
+      next: (res) => {
+        this.employee = res.data;
+      },
+      error: (e) => {
+        console.log(e);
+      },
+      complete: () => {
+        console.log(this.employee);
+        // Rebind data back.
+        this.todo = this.employee.todo;
+        this.done = this.employee.done;
+      }
+    })
+
   }
 }

@@ -41,20 +41,10 @@
 }
 
 .logo {
-  border: #000 1px solid;
-  max-width: 50px;
+  max-height: 50px;
   margin-top: 25px;
 }
 
-.logo_text-container {
-  position: absolute;
-  margin-top: 50px;
-  margin-left: 12vmax;
-}
-
-.logo_text {
-  height: 45px;
-}
 
 .links {
   margin: 0 0 0 12vmax; /* T R B L */
@@ -86,10 +76,11 @@
 }
 
 .footer-content {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: lighter;
   padding-left: 100px;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
+  font-style: italic;
 }
 
 .bu-link {
