@@ -36,20 +36,18 @@ const routes: Routes = [
     children: [
       {
         path: '', // Anyone that follows the BaseLayoutComponent, they will be using the BaseLayout in all of the child components of that Base component.
-        component: HomeComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'about',
-        component: AboutComponent,
-        canActivate: [AuthGuard]
+        component: HomeComponent
       },
       {
         path: 'contact',
-        component: ContactComponent,
-        canActivate: [AuthGuard]
+        component: ContactComponent
       },
-    ]
+      {
+        path: 'about',
+        component: AboutComponent
+      }
+    ],
+    canActivate: [AuthGuard] // Adds SignInGuard to parent.
   },
   {
     path:'session', // Session is the parent route and uses the AuthLayoutComponent and will navigate to the NotFoundComponent.
@@ -66,10 +64,10 @@ const routes: Routes = [
     ]
   },
   {
-    // Redirect user to session/not-found if there is any URL not found in the routing file.
-    path: '**', // "**" specifies wildcard path that catches any non-existing routes [A].
+    path: '**', // If there is any URL not found in the routing file, redirects to session/not-found.
     redirectTo: 'session/not-found' // Session is the parent route.
   }
+
 ];
 
 @NgModule({
