@@ -1,0 +1,29 @@
+<!--
+============================================
+; Title: nodebucket
+; File Name: confirm-dialog.component.html
+; Author: Professor Krasso
+; Date: 31 August 2022
+; Modified By: Laura Kendl
+; Description: "nodebucket is task management software designed to simplify the way you
+; create, track, edit, and delete time sensitive material. This is a full-stack
+; MEAN (MongoDB, Express, Angular, and Node.js) application, utilizing the concepts that
+; were taught in previous courses. MongoDB will be used for data persistence. Node.js
+; will be used for manipulating and returning saved records, SoapUI for unit testing,
+; and Angular for user interactions" (Krasso, 2022).
+===========================================
+-->
+
+<h2 mat-dialog-title>{{ dialogData.header }}</h2>
+<div mat-dialog-content>
+  <p>{{ dialogData.body }}</p>
+  <small style="color: #dF546A">WARNING: This action cannot be undone.</small>
+</div>
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-actions align="end">
+<!--Add matDialogClose on cancel button result from home.component.ts passes over to cancel.-->
+  <button mat-raised-button matDialogClose="cancel" color="primary">No Thanks</button>
+  <button mat-raised-button matDialogClose="confirm" color="primary" cdkFocusInitial>Confirm</button>
+</div>
