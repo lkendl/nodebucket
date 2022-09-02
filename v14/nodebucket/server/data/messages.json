@@ -1,0 +1,5 @@
+[
+  { "serverError": "Internal Server Error"},
+  { "dbError": "MongoDB Server Error"},
+  { "success": "Query successful"}
+]
