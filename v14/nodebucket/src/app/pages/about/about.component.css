@@ -19,6 +19,15 @@
 ===========================================
 */
 
+.about-container {
+  margin: auto auto;
+}
+
+.about-txt-container {
+  width: 80%;
+  margin: auto auto;
+}
+
 .center {
   display: block;
   margin-left: auto;
@@ -43,19 +52,13 @@
 }
 
 .about-img {
-  max-width: 400px;
+  max-width: 100%;
   padding: 5px;
 }
 
 .bio-img {
   max-width: 100%;
   margin: 15px 0 0;
-}
-
-.about-txt-container {
-  margin-top: 20px;
-  max-width: 70%;
-  margin: auto auto;
 }
 
 p {
@@ -109,6 +112,7 @@ p {
 .white-heading span {
   color: #ffffff;
 }
+
 /*-----Testimonial-------*/
 
 .testimonial:after {
@@ -126,13 +130,15 @@ p {
 
 .testimonial {
   min-height: 375px;
+  width: 75%;
+  margin: auto auto;
   position: relative;
-  background: url(../../../assets/hogwarts.jpg);
-  background-size:cover;
+  background: url(../../../assets/hogwarts.jpg), linear-gradient(0deg, rgb(0, 0, 0, 1), rgb(0, 0, 0, 0.7));
+  background-blend-mode: overlay;
+  background-size: cover;
   padding-top: 50px;
   padding-bottom: 50px;
   background-position: center;
-      background-size: cover;
 }
 
 .testimonial4_header{
@@ -160,7 +166,7 @@ left: 0;
 right: 0;
 bottom: 0;
 width: 70%;
-margin: auto;
+margin: auto auto;
 padding: 20px;
 position: relative;
 text-align: center;

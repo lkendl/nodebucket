@@ -16,23 +16,53 @@
 
 <div fxLayout="column" class="main-welcome">
 
+  <mat-card fxFlex class="page-title mat-elevation-z0">
+    Task Management
+  </mat-card>
+
   <div fxFlex>
-    <h1 class="title"> Welcome to nodebucket,
-      <br />
-      {{ sessionName }}!
 
-    <br />
+    <mat-card class="welcome-message mat-elevation-z0">
+    <h1 class="title">
+      Welcome to nodebucket, {{ sessionName }}!
+    </h1>
+    </mat-card>
 
-    <hr style="width: 50%;">
+    <h1 class="title">
     <span class="subtitle">
       Ready to make life a little simpler? It's easy!
       <br />
-      Just enter your tasks below. Drag your finished <b>ToDo</b> tasks to the <b>Done</b> column when finished!
+      Just enter your tasks below. Drag your <b>ToDo</b> tasks to the <b>Done</b> column when finished!
     </span>
-  </h1>
+    </h1>
+
+  <div class="directions">
+    <mat-list>
+      <mat-list-item>
+        <mat-icon matListIcon>add_circle</mat-icon>
+        <h3 matLine> Create a ToDo task in the field below </h3>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListIcon>drag_indicator</mat-icon>
+        <h3 matLine> Drag your finished tasks to the Done column </h3>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListIcon>delete</mat-icon>
+        <h3 matLine> Click the delete button to remove tasks </h3>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+
+
+
+
 </div>
 
+<br /> <br />
+
 <div fxFlex>
+  <mat-card-title class="create-task-title">Create a Task</mat-card-title>
   <div class="task-container mat-elevation-z4" fxLayout="column">
     <mat-card>
       <form [formGroup]="taskForm" (ngSubmit)="createTask(); taskForm.reset()">
@@ -45,7 +75,7 @@
             placeholder="Enter a task name..." />
 
             <!-- Create a button with a suffix to place at end of field. -->
-            <button type="submit" [disabled]="!taskForm.valid" mat-icon-button matSuffix>
+            <button type="submit" [disabled]="!taskForm.valid" mat-icon-button matSuffix matTooltip="Add to ToDo list" matTooltipPosition="above">
               <mat-icon color="primary" style="width: 36px; height: 36px; font-size: 36px;" matSuffix>add_circle</mat-icon>
             </button>
 
@@ -96,24 +126,21 @@
 
             <!-- Add qualifier cdkDrag to make section drag. Will be applied to all cards due to for loop. -->
             <div *ngFor="let item of todo" cdkDrag>
+
               <mat-card class="mat-elevation-z0 task-card">
-                <mat-card-content>
+                  <mat-grid-list cols="8" rowHeight="4em">
+                    <mat-grid-tile col="1" style="margin-left: -5%;">
+                      <mat-icon matListIcon>drag_indicator</mat-icon>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="6">{{ item.text }}</mat-grid-tile>
+                    <mat-grid-tile colspan="1">
+                      <button mat-icon-button (click)="deleteTask(item._id)" matTooltip="Delete task" matTooltipPosition="above" style="margin-left: 30%;">
+                      <mat-icon color="accent">delete</mat-icon>
+                     </button>
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                </mat-card>
 
-                  <div fxLayout="row">
-                    <div fxFlex>
-                      {{ item.text }}
-                    </div>
-
-                    <div fxFlex fxLayoutAlign="end" style="margin-top: -7px;">
-                      <button mat-icon-button (click)="deleteTask(item._id)">
-                        <mat-icon color="warn">delete</mat-icon>
-                      </button>
-                    </div>
-
-                  </div>
-
-                </mat-card-content>
-              </mat-card>
             </div>
             <!-- End of the for loop. -->
           </div>
@@ -146,20 +173,19 @@
             <div *ngFor="let item of done" cdkDrag>
 
               <mat-card class="mat-elevation-z0 task-card">
-                <div fxLayout="row">
-
-                  <div fxFlex>
-                    {{ item.text }}
-                  </div>
-
-                  <div fxFlex fxLayoutAlign="end" style="margin-top: -7px;">
-                    <button mat-icon-button (click)="deleteTask(item._id)">
-                      <mat-icon color="warn">delete</mat-icon>
-                    </button>
-                  </div>
-
-                </div>
+                <mat-grid-list cols="8" rowHeight="4em">
+                  <mat-grid-tile col="1" style="margin-left: -5%;">
+                    <mat-icon matListIcon>drag_indicator</mat-icon>
+                  </mat-grid-tile>
+                  <mat-grid-tile colspan="6">{{ item.text }}</mat-grid-tile>
+                  <mat-grid-tile colspan="1">
+                    <button mat-icon-button (click)="deleteTask(item._id)" matTooltip="Delete task" matTooltipPosition="above" style="margin-left: 30%;">
+                    <mat-icon color="accent">delete</mat-icon>
+                   </button>
+                  </mat-grid-tile>
+                </mat-grid-list>
               </mat-card>
+
             </div>
           </div>
         </mat-card-content>
@@ -168,15 +194,20 @@
     <!-- End of second row-->
   </div>
 </div>
-<hr style="width: 50%;">
-<span class="subtitle">
-  <br />
-  <i>Questions?</i>
-  <br /><br />
-  <button routerLink="/contact">Contact Us</button>
-  <br /><br />
-  nodebucket's genius developer, Dwight Schrute, will be more than happy to assist you.
-</span>
+
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <mat-icon>help</mat-icon>
+    </mat-panel-title>
+    <mat-panel-description>
+      Questions?
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <span class="subtitle">
+    <button mat-raised-button color="accent" routerLink="/contact">Contact Us</button>
+  </span>
+</mat-expansion-panel>
 
 
 <br />

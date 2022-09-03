@@ -14,13 +14,34 @@
 ===========================================
 */
 
+
 .main-welcome {
   margin-top: 30px;
 }
 
 .title {
   text-align: center;
-  font-weight: lighter;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.welcome-message{
+  margin: -30px -16px 30px -16px;
+  background-color: #740001;
+  color: #FFF;
+}
+
+.welcome-message :hover{
+  transform: scale(1.1);
+  transition: 100ms ease-in;
+}
+
+.directions {
+  margin-left: 25%;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .subtitle {
@@ -28,9 +49,12 @@
   font-size: 14px;
 }
 
+.create-task-title {
+  margin: 0 0 10px 13%;
+}
+
 .task-container {
-  min-width: 50%;
-  max-width: 75%;
+  width: 75%;
   margin: 0 auto;
 }
 
@@ -38,19 +62,25 @@
   border: 1px solid #ccc;
   min-height: 68px;
   min-width: 50%;
-  background: #FFF;
+  background: #F5F5F5;
   border-radius: 4px;
   overflow: hidden;
   display: block;
+  min-height: 68px;
+  padding: 3px;
 }
 
 .task-card {
   cursor: move;
-  padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
-  min-height: 68px;
+  border: solid 1px #ccc;
   font-size: 14px;
   box-sizing: border-box;
-  justify-content: space-between;
+}
+
+mat-expansion-panel {
+  margin: 30px auto 0 auto;
+  width: 25%;
+  text-align: center;
   align-items: center;
 }
+

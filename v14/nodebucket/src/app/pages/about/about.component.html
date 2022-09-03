@@ -19,113 +19,125 @@
 ===========================================
 -->
 
-<div fxLayout="row wrap" class="about-container">
+<div fxLayout="column" class="about-container" style="margin-top: 50px;">
 
-  <div fxFlex class="about-txt-container">
+  <mat-card fxFlex class="page-title mat-elevation-z0" style="margin-top: -65px;">
+    About Us
+  </mat-card>
 
-    <mat-card-title class="text-center title gold">About nodebucket</mat-card-title>
+  <div fxFlex>
 
+
+    <mat-grid-list cols="3" rowHeight="150px">
+      <mat-grid-tile col="1" style="text-align: center;">
+        <img src="./assets/logo_square.png" class="about-logo" />
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <mat-card-title class="title gold" style="margin-right: 50%; margin-bottom: -10px;">nodebucket's Origins</mat-card-title>
+      </mat-grid-tile>
+    </mat-grid-list>
+<!--
+  <mat-card-title class="text-center title gold">
     <div class="about-img-container text-center">
       <img src="./assets/logo_square.png" class="about-logo" />
     </div>
-
-    <mat-card-title class="text-center title gold">Origins</mat-card-title>
-
-    <p class="text">
-      Nodebucket was developed out of the undeniable need to keep certain paper salespeople organized at the country's #1 paper company, Dunder Mifflin. As a directive from HR, the nodebucket application was theorized to help keep employees focused on their individual tasks, no matter when and how often distractions arose (which was often). The proposed nodebucket project had one major complication, though. The branch did not have a web developer, nor could they afford to hire a professional. Due to his undying loyalty and dedication to his company, Dwight took on the nodebucket challenge. Without hesitation (and with his own funds), Dwight enrolled at Bellevue University online to learn the necessary skills he needed to create nodebucket. Between tending his farm, remaining the top salesman at his job, and running his B&B, Dwight earned his Bachelor's in Web Development. Shortly after, Dwight fulfilled his duty of creating nodebucket in September 2022.
-    </p>
-
     <br /><br />
+    About nodebucket
+  </mat-card-title> -->
 
-      <div class="text-center">
-        <strong>
-          Dwight Schrute
-        </strong>
-      </div>
-      <div class="about-img-container text-center">
+<div class="about-txt-container">
+  <p class="text">
+    Nodebucket was developed out of the undeniable need to help certain paper salespeople stay organized at the country's #1 paper company, Dunder Mifflin. As a directive from HR, the nodebucket application was theorized to help employees stay focused on their individual tasks, no matter when and how often distractions arose (which was often). The proposed nodebucket project had one major complication, though. The branch did not have a web developer, nor could they afford to hire a professional.
+  </p>
+  <p class="text">
+    Due to his undying loyalty and dedication to his company, Dwight took on the nodebucket challenge. Without hesitation (and with his own funds), Dwight enrolled at Bellevue University online to learn the necessary skills he needed to create nodebucket. Between tending his farm, remaining the top salesman at his job, and running his B&B, Dwight earned his Bachelor's in Web Development. Shortly after, Dwight fulfilled his duty of creating nodebucket in September 2022.
+  </p>
 
-        <img src="../../../assets/dwight.jpg" class="about-img">
-      </div>
-      <div class="text-center">
-        <em>
-          (PBN Canvas, n.d.)
-        </em>
-      </div>
+  <br />
 
-    <br /><br />
-
-    <p class="text">
-      Nodebucket's design is an homage to author J.K. Rowling's fantasy novel series, Harry Potter. An avid Harry Potter fan, nodebucket developer Dwight Schrute identifies with Gryffindor's traits of courage, determination, and bravery (sometimes to the point of recklessness at times). Nodebucket's theme of red and gold is inspired by House Gryffindor.
-    </p>
-
-    <br /><br />
-    <!-- TESTIMONIALS -->
-
-    <section class="testimonial text-center">
-      <div class="container">
-
-          <div class="heading white-heading">
-              Testimonials
-          </div>
-          <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
-
-              <div class="carousel-inner" role="listbox">
-                  <div class="carousel-item active">
-                      <div class="testimonial4_slide">
-                        <div class="circle-portrait">
-                          <img src="../../../assets/stanley.jpg" />
-                          <i class="fa fa-asterisk"></i>
-                        </div>
-                          <p>"With nodebucket's task management, I will never miss another Pretzel Day again!" </p>
-                          <h4>Stanley H.</h4>
-                      </div>
-                  </div>
-                  <div class="carousel-item">
-                      <div class="testimonial4_slide">
-                        <div class="circle-portrait">
-                          <img src="../../../assets/erin.jpg" />
-                          <i class="fa fa-asterisk"></i>
-                        </div>
-                        <p>"Nodebucket has helped me become more confident in my receptionist duties. I have had a 95% success rate in managing my pen shipments."</p>
-                          <h4>Erin H.</h4>
-                      </div>
-                  </div>
-                  <div class="carousel-item">
-                      <div class="testimonial4_slide">
-                        <div class="circle-portrait">
-                          <img src="../../../assets/kelly.jpg" />
-                          <i class="fa fa-asterisk"></i>
-                        </div>
-                          <p>"My dating life has never been better, thanks for asking. I guess nodebucket has helped me to remember to message <strong>[REDACTED]</strong> every hour on the hour. Why won't he text me back...?" </p>
-                          <h4>Kelly K.</h4>
-                      </div>
-                  </div>
-              </div>
-              <a class="carousel-control-prev" href="#testimonial4" data-slide="prev">
-                  <span class="carousel-control-prev-icon"></span>
-              </a>
-              <a class="carousel-control-next" href="#testimonial4" data-slide="next">
-                  <span class="carousel-control-next-icon"></span>
-              </a>
-          </div>
-      </div>
-  </section>
-
-    <!-- END OF TESTIMONIALS -->
-
-    <br />
     <div class="text-center">
       <strong>
-        Thank you for visiting nodebucket!
+        Dwight Schrute
       </strong>
     </div>
-    <br />
+    <div class="about-img-container text-center">
+
+      <img src="../../../assets/dwight.jpg" class="about-img">
+    </div>
     <div class="text-center">
-      <small>
-        <i class="fa fa-asterisk"></i> Images from <a href="https://www.peacocktv.com/stream-tv/the-office/characters" target="_blank">Peacock TV</a>
-      </small>
+      <em>
+        (PBN Canvas, n.d.)
+      </em>
     </div>
 
-    <br /><br />
+  <br />
+
+  <p class="text">
+    Nodebucket's design is an homage to author J.K. Rowling's fantasy novel series, Harry Potter. An avid Harry Potter fan, nodebucket developer Dwight Schrute identifies with Gryffindor's traits of courage, determination, and bravery (often to the point of recklessness). Nodebucket's theme of red and gold is inspired by House Gryffindor.
+  </p>
   </div>
+</div>
+
+  <br /><br />
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonial text-center">
+    <div class="container">
+        <div class="heading white-heading">
+            Testimonials
+        </div>
+        <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
+
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <div class="testimonial4_slide">
+                      <div class="circle-portrait">
+                        <img src="../../../assets/stanley.jpg" />
+                        <i class="fa fa-asterisk"></i>
+                      </div>
+                        <p>"With nodebucket's task management, I will never miss another Pretzel Day again!" </p>
+                        <h4>Stanley H.</h4>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="testimonial4_slide">
+                      <div class="circle-portrait">
+                        <img src="../../../assets/erin.jpg" />
+                        <i class="fa fa-asterisk"></i>
+                      </div>
+                      <p>"Nodebucket has helped me become more confident in my receptionist duties. I have had a 95% success rate in managing my pen shipments."</p>
+                        <h4>Erin H.</h4>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="testimonial4_slide">
+                      <div class="circle-portrait">
+                        <img src="../../../assets/kelly.jpg" />
+                        <i class="fa fa-asterisk"></i>
+                      </div>
+                        <p>"My dating life has never been better, thanks for asking. I guess nodebucket has helped me remember to message <strong>[REDACTED]</strong> every hour on the hour. Why won't he text me back...?" </p>
+                        <h4>Kelly K.</h4>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </div>
+</section>
+
+  <!-- END OF TESTIMONIALS -->
+
+  <br />
+  <div class="text-center">
+    <strong>
+      Thank you for visiting nodebucket!
+    </strong>
+  </div>
+  <br />
+  <div class="text-center">
+    <small>
+      <i class="fa fa-asterisk"></i> Images from <a href="https://www.peacocktv.com/stream-tv/the-office/characters" target="_blank">Peacock TV</a>
+    </small>
+  </div>
+
+  <br /><br />
 </div>
