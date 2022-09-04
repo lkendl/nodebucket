@@ -103,7 +103,7 @@
 
 <div fxFlex>
 
-  <div fxLayout="row wrap" fxLayoutGap="15px" class="task-container">
+  <div fxLayout="row wrap" fxLayoutGap="5px" class="card-container">
 
     <!-- First row start. -->
     <div fxFlex>
@@ -116,7 +116,7 @@
           <!-- ToDo column. -->
           <div
             fxLayout="column"
-            fxLayoutGap="10px"
+            fxLayoutGap="5px"
             cdkDropList
             #todoList="cdkDropList"
             [cdkDropListData]="todo"
@@ -161,7 +161,7 @@
           <!-- ToDo column. -->
           <div
             fxLayout="column"
-            fxLayoutGap="10px"
+            fxLayoutGap="5px"
             cdkDropList
             #doingList="cdkDropList"
             [cdkDropListData]="doing"
@@ -206,7 +206,7 @@
           <!-- Done -->
           <div class="task-column"
             fxLayout="column"
-            fxLayoutGap="10px"
+            fxLayoutGap="5px"
             cdkDropList
             #doneList="cdkDropList"
             [cdkDropListData]="done"
