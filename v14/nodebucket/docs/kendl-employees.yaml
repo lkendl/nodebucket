@@ -74,3 +74,85 @@ paths:
           description: Server Exception
         '501':
           description: MongoDB Exception
+    put:
+      tags:
+        - Employees
+      description: API for updating an employee's tasks in MongoDB Atlas.
+      summary: Updates employee tasks by empId
+      parameters:
+        - name: empId
+          in: path
+          required: true
+          description: The user's empId.
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - todo
+                - doing
+                - done
+              properties:
+              todo:
+                description: User todo input
+                type: array
+                items:
+                  type: object
+                  properties:
+                    text:
+                      description: Employee's todo text input
+                      type: string
+              doing:
+                description: User doing input
+                type: array
+                items:
+                  type: object
+                  properties:
+                    text:
+                      description: Employee's doing text input
+                      type: string
+              done:
+                description: User done input
+                type: array
+                items:
+                  type: object
+                  properties:
+                    text:
+                      description: Employee's done text input
+                      type: string
+      responses:
+        '200':
+          description: Query successful
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+  /employees/{empId}/tasks/{taskId}:
+    delete:
+      tags:
+        - Employees
+      description: API to delete an employee's task from MongoDB Atlas.
+      summary: Deletes a task
+      parameters:
+        - name: empId
+          in: path
+          required: true
+          description: The user's empId.
+          schema:
+            type: number
+        - name: taskId
+          in: path
+          required: true
+          description: The taskId of task to be deleted.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Query successful
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
