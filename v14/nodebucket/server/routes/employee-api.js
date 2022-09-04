@@ -120,7 +120,7 @@ router.get('/:empId', async(req, res) => {
 // Create an asynchronous findAllTasks API.
 router.get('/:empId/tasks', async(req, res) => {
   try {
-    Employee.findOne({'empId': req.params.empId}, 'empId todo done', function(err, emp) {
+    Employee.findOne({'empId': req.params.empId}, 'empId todo doing done', function(err, emp) {
       if(err) {
         const mongoResponse = new BaseResponse(501, 'MongoDB Server Error', err);
         console.log(mongoResponse.toObject());
@@ -236,6 +236,7 @@ router.post('/:empId/tasks', async(req, res) => {
  *           schema:
  *             required:
  *               - todo
+ *               - doing
  *               - done
  *             properties:
  *              todo:
@@ -246,6 +247,15 @@ router.post('/:empId/tasks', async(req, res) => {
  *                  properties:
  *                    text:
  *                      description: Employee's todo text input
+ *                      type: string
+ *              doing:
+ *                description: User doing input
+ *                type: array
+ *                items:
+ *                  type: object
+ *                  properties:
+ *                    text:
+ *                      description: Employee's doing text input
  *                      type: string
  *              done:
  *                description: User done input
@@ -279,6 +289,7 @@ router.put('/:empId/tasks', async(req, res) => {
         // Update MongoDB arrays.
         emp.set({
           todo: req.body.todo,
+          doing: req.body.doing,
           done: req.body.done
         })
 
@@ -302,7 +313,6 @@ router.put('/:empId/tasks', async(req, res) => {
   }
 })
 
-// UPDATE THIS API DOCUMENTATION
 /**
  * deleteTask
  * @openapi
@@ -350,6 +360,7 @@ router.delete('/:empId/tasks/:taskId', async(req, res) => {
 
         // Query todo array and look for the document Id to match teh task Id. A matching record will be held in the todoItem. If it fails, todoItem will be null.
         const todoItem = emp.todo.find(item => item._id.toString() === taskId);
+        const doingItem = emp.doing.find(item => item._id.toString() === taskId);
         const doneItem = emp.done.find(item => item._id.toString() === taskId);
 
         if (todoItem) {
@@ -364,6 +375,21 @@ router.delete('/:empId/tasks/:taskId', async(req, res) => {
               const updatedTodoItemSuccess = new BaseResponse('200', 'Query successful', updatedTodoItemEmp);
               console.log(updatedTodoItemSuccess.toObject());
               res.status(200).send(updatedTodoItemSuccess.toObject());
+            }
+          })
+
+        } else if (doingItem) {
+          emp.done.id(doingItem._id).remove();
+
+          emp.save(function(err, updatedDoingItemEmp) {
+            if (err) {
+              const updatedDoingItemErrResponse = new BaseResponse('501', 'MongoDB server error', err);
+              console.log(updatedDoingItemErrResponse.toObject());
+              res.status(501).send(updatedDoingItemErrResponse.toObject());
+            } else {
+              const updatedDoingItemSuccessResponse = new BaseResponse('200', 'Query successful', updatedDoingItemEmp);
+              console.log(updatedDoingItemSuccessResponse.toObject());
+              res.status(200).send(updatedDoingItemSuccessResponse.toObject());
             }
           })
 

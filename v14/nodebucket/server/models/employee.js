@@ -20,6 +20,7 @@ let employeeSchema = new Schema({
   firstName: { type: String },
   lastName: { type: String },
   todo: [itemSchema],
+  doing: [itemSchema],
   done: [itemSchema]
   // Define MongoDB collection to connect to.
 }, { collection: 'employees'}); // Note: If left undefined, MongoDB will automatically create a new collection with a plural. (i.e., model "Roles" Mongoose will create a MongoDB collection named "Roleses").

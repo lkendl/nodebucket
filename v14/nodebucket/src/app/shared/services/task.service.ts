@@ -47,10 +47,11 @@ export class TaskService {
   /**
    * updateTask
    */
-   updateTask(empId: string, todo: Item[], done: Item[]): Observable<any> {
+   updateTask(empId: string, todo: Item[], doing: Item[], done: Item[]): Observable<any> {
     return this.http.put('/api/employees/' + empId + '/tasks', {
       // Define HTTP body of request.
       todo,
+      doing,
       done
     })
   }

@@ -40,7 +40,7 @@
     <mat-list>
       <mat-list-item>
         <mat-icon matListIcon>add_circle</mat-icon>
-        <h3 matLine> Create a ToDo task in the field below </h3>
+        <h3 matLine> Create a task in the Todo field below </h3>
       </mat-list-item>
       <mat-list-item>
         <mat-icon matListIcon>drag_indicator</mat-icon>
@@ -99,13 +99,13 @@
 
 <br /> <br />
 
-<!-- Next columns -->
+<!-- Next columns. -->
 
 <div fxFlex>
 
-  <div fxLayout="row" fxLayoutGap="15px" class="task-container">
+  <div fxLayout="row wrap" fxLayoutGap="15px" class="task-container">
 
-    <!-- first row -->
+    <!-- First row start. -->
     <div fxFlex>
 
       <mat-card class="mat-elevation-z0">
@@ -113,14 +113,14 @@
 
         <mat-card-content>
 
-          <!-- todo -->
+          <!-- ToDo column. -->
           <div
             fxLayout="column"
             fxLayoutGap="10px"
             cdkDropList
             #todoList="cdkDropList"
             [cdkDropListData]="todo"
-            [cdkDropListConnectedTo]="[doneList]"
+            [cdkDropListConnectedTo]="[doneList, doingList]"
             (cdkDropListDropped)="drop($event)"
             class="task-column">
 
@@ -148,9 +148,54 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <!-- End of the first row. -->
+    <!-- First row end. -->
 
-    <!-- Start of the second row. -->
+    <!-- Second row start. -->
+    <div fxFlex>
+
+      <mat-card class="mat-elevation-z0">
+        <mat-card-title>Doing</mat-card-title>
+
+        <mat-card-content>
+
+          <!-- ToDo column. -->
+          <div
+            fxLayout="column"
+            fxLayoutGap="10px"
+            cdkDropList
+            #doingList="cdkDropList"
+            [cdkDropListData]="doing"
+            [cdkDropListConnectedTo]="[doneList, todoList]"
+            (cdkDropListDropped)="drop($event)"
+            class="task-column">
+
+            <!-- Add qualifier cdkDrag to make section drag. Will be applied to all cards due to for loop. -->
+            <div *ngFor="let item of doing" cdkDrag>
+
+              <mat-card class="mat-elevation-z0 task-card">
+                  <mat-grid-list cols="8" rowHeight="4em">
+                    <mat-grid-tile col="1" style="margin-left: -5%;">
+                      <mat-icon matListIcon>drag_indicator</mat-icon>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="6">{{ item.text }}</mat-grid-tile>
+                    <mat-grid-tile colspan="1">
+                      <button mat-icon-button (click)="deleteTask(item._id)" matTooltip="Delete task" matTooltipPosition="above" style="margin-left: 30%;">
+                      <mat-icon color="accent">delete</mat-icon>
+                     </button>
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                </mat-card>
+
+            </div>
+            <!-- End of the for loop. -->
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Second row end. -->
+
+    <!-- Third row start. -->
     <div fxFlex>
       <mat-card class="mat-elevation-z0">
 
@@ -165,7 +210,7 @@
             cdkDropList
             #doneList="cdkDropList"
             [cdkDropListData]="done"
-            [cdkDropListConnectedTo]="[todoList]"
+            [cdkDropListConnectedTo]="[todoList, doingList]"
             (cdkDropListDropped)="drop($event)"
             class="task-column">
 
@@ -191,7 +236,7 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <!-- End of second row-->
+    <!-- Third row end. -->
   </div>
 </div>
 

@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
 
   employee: Employee;
   todo: Item[];
+  doing: Item[];
   done: Item[];
   empId: string;
   sessionName: string;
@@ -48,6 +49,7 @@ export class HomeComponent implements OnInit {
     this.empId = this.cookieService.get('session_user'), 10;
     this.employee = {} as Employee;
     this.todo = [];
+    this.doing = [];
     this.done = [];
     this.sessionName = this.cookieService.get('session_name');
 
@@ -63,6 +65,7 @@ export class HomeComponent implements OnInit {
       },
       complete: () => {
         this.todo = this.employee.todo;
+        this.doing = this.employee.doing;
         this.done = this.employee.done;
       }
     })
@@ -86,6 +89,7 @@ export class HomeComponent implements OnInit {
       },
       complete: () => {
         this.todo = this.employee.todo;
+        this.doing = this.employee.doing;
         this.done = this.employee.done;
         this.taskForm.controls['task'].setErrors({'incorrect': false}); // Clears errors in form.
       }
@@ -122,6 +126,7 @@ deleteTask(taskId: string) {
           // After next and error complete, take todo array and done array and assign them to variables.
           complete: () => {
             this.todo = this.employee.todo;
+            this.doing = this.employee.doing;
             this.done = this.employee.done;
           }
         })
@@ -137,21 +142,20 @@ drop(event: CdkDragDrop<any[]>) {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     console.log('Reordered tasks in the same column');
     // If user moves to the same container, update the items.
-    this.updateTaskList(this.empId, this.todo, this.done);
+    this.updateTaskList(this.empId, this.todo, this.doing, this.done);
   } else {
     transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
 
     console.log('Moved tasks to a new column');
-    this.updateTaskList(this.empId, this.todo, this.done);
+    this.updateTaskList(this.empId, this.todo, this.doing, this.done);
   }
 
   // Handle events when items are dragged into another container.
 }
 
-
   // Create a function to make a call to API.
-  updateTaskList(empId: string, todo: Item[], done: Item[]): void {
-    this.taskService.updateTask(empId, todo, done).subscribe({
+  updateTaskList(empId: string, todo: Item[], doing: Item[], done: Item[]): void {
+    this.taskService.updateTask(empId, todo, doing, done).subscribe({
       next: (res) => {
         this.employee = res.data;
       },
@@ -162,6 +166,7 @@ drop(event: CdkDragDrop<any[]>) {
         console.log(this.employee);
         // Rebind data back.
         this.todo = this.employee.todo;
+        this.doing = this.employee.doing;
         this.done = this.employee.done;
       }
     })
