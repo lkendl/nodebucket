@@ -135,6 +135,8 @@ deleteTask(taskId: string) {
   })
 }
 
+
+
 // Create event to handle user dragging and dropping items.
 drop(event: CdkDragDrop<any[]>) {
   // Create an event when items are dragged in same container.
