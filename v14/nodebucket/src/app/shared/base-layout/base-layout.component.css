@@ -51,9 +51,19 @@
   margin-top: 25px;
 }
 
+.session-name-container {
+  color: #FFF;
+  position: absolute;
+  margin-left: 70%;
+  margin-top: 8px;
+}
+
+.session-name {
+  color: #FFF;
+}
 
 .links {
-  margin: 0 0 0 12vmax; /* T R B L */
+  margin: 0 0 0 10%; /* T R B L */
 }
 
 .navbar-link {
@@ -69,7 +79,7 @@
 
 .content-container {
   margin-bottom: 100px;
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 .main-content {
