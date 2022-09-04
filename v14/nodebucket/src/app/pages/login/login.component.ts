@@ -74,6 +74,9 @@ export class LoginComponent implements OnInit {
           // Add another cookie for session name. Destroy cookie after one day.
           this.cookieService.set('session_name', `${this.employee.firstName} ${this.employee.lastName}`, 1);
 
+          // Add another cookie for session name. Destroy cookie after one day.
+          this.cookieService.set('session_first_name', `${this.employee.firstName}`, 1);
+
           // Give user access to the root of the application.
           this.router.navigate(['/']);
 

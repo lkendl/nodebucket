@@ -17,22 +17,33 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { Employee } from '../../shared/models/employee.interface';
 
 @Component({
   selector: 'app-base-layout',
   templateUrl: './base-layout.component.html',
   styleUrls: ['./base-layout.component.css']
 })
+
 export class BaseLayoutComponent implements OnInit {
   sessionName: string;
+  sessionFirstName: string;
   year: number;
+  // Create employee variable to store the login information.
+  employee: Employee;
+
 
   constructor(private cookieService: CookieService, private router: Router) {
+
+  // Define Employee object as an empty Employee object.
+  this.employee = {} as Employee;
   this.sessionName = this.cookieService.get('session_name');
+  this.sessionFirstName = this.cookieService.get('session_first_name');
   this.year = Date.now();
 }
   ngOnInit(): void {
-  }
+  this.cookieService.set('session_first_name', `${this.employee.firstName}, 1`);
+}
 
   // Call the cookieService.deleteAll function and then use the Router to navigate users to the login page.
   logout() {

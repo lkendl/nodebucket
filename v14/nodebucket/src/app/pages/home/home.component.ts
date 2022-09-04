@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
   done: Item[];
   empId: string;
   sessionName: string;
+  // sessionFirstName: string;
 
   taskForm: FormGroup = this.fb.group({
 
@@ -52,6 +53,7 @@ export class HomeComponent implements OnInit {
     this.doing = [];
     this.done = [];
     this.sessionName = this.cookieService.get('session_name');
+    // this.sessionFirstName = this.employee.firstName;
 
     // Subscribe to the taskService observable (task.service.ts).
     this.taskService.findAllTasks(this.empId).subscribe({
@@ -67,6 +69,7 @@ export class HomeComponent implements OnInit {
         this.todo = this.employee.todo;
         this.doing = this.employee.doing;
         this.done = this.employee.done;
+        // this.sessionFirstName = this.employee.firstName;
       }
     })
    }
