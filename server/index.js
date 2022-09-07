@@ -56,7 +56,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use('/api/employees', EmployeeAPI);
 
 // default server port value.
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 // Database connection string.
 const CONN = 'mongodb+srv://nodebucket_user:s3cret@buwebdev-cluster-1.p8egd.mongodb.net/nodebucket?retryWrites=true&w=majority';
