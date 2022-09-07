@@ -55,7 +55,8 @@ const routes: Routes = [
     children: [
       {
         path: 'not-found',
-        component: NotFoundComponent
+        component: NotFoundComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'login',
@@ -71,7 +72,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
